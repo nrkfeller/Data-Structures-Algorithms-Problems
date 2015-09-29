@@ -1,7 +1,6 @@
 import java.util.Arrays;
 
-public class Q1 {
-    
+public class coinBalancer {
     
     public static void main(String[] args) {
         // set weight of lighter coins
@@ -11,8 +10,7 @@ public class Q1 {
         // place all coins in array, with only one heavier coin
         int[] anArrayOfCoins = {c,c,c,c,c,c,c,ch}; //,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c,c};
         
-        int[] Answer = Q1.balance(anArrayOfCoins);
-        System.out.println(Arrays.toString(Answer));
+        int[] Answer = coinBalancer.balance(anArrayOfCoins);
     }
     
     public static int[] balance(int[] array) {
@@ -24,15 +22,15 @@ public class Q1 {
             int[] firstHalf = Arrays.copyOfRange(array, 0, len/2);
             int[] secondHalf = Arrays.copyOfRange(array, len/2, len);
             // place each side on scale and keep only heaviest side
-            if( (Q1.sum(firstHalf)) > (Q1.sum(secondHalf)) ) {
+            if( (coinBalancer.sum(firstHalf)) > (coinBalancer.sum(secondHalf)) ) {
                 // do this recursively
                 System.out.println(Arrays.toString(firstHalf));
-                return Q1.balance(firstHalf);
+                return coinBalancer.balance(firstHalf);
             } 
             else {
                 // do this recursively
                 System.out.println(Arrays.toString(secondHalf));
-                return Q1.balance(secondHalf);
+                return coinBalancer.balance(secondHalf);
             }
         }
         

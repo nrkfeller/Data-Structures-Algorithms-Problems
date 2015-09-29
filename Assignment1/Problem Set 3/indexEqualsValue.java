@@ -9,8 +9,7 @@ public class indexEqualsValue {
     int[] numbers;
     
     public static void main(String[] args) {
-        int[] numbers = {9,5,4,3,4,1,6};
-        // input this should print 3 4 6
+        int[] numbers = {-3, -1, 1, 3, 5};
         indexEqualsValue.findEquals(numbers);
     }
     
