@@ -74,6 +74,7 @@ class LinkList{
         Link previous = first;
         while (current.iData != id || current.dData != dd) {
             if (current.next == null) {
+                System.out.println("Link not found");
                 return null;
                 
             } else {
@@ -81,6 +82,9 @@ class LinkList{
                 current = current.next;
             }
         }
+        System.out.print("Deleting : ");
+        current.displayLink();
+        System.out.println();
         if (current == first) {
             first = first.next;
         } else {
@@ -119,7 +123,7 @@ class Test
         theList.insertFirst(88,8.99);
         
         theList.displayList();
-        theList.delete(88,8.99);
+        theList.delete(44,4.99);
         
         theList.displayList();
     
