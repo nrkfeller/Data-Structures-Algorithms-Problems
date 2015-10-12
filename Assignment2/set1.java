@@ -1,17 +1,178 @@
-Q1. Implement a deque using a double-linked list.
+// Q1. Implement a deque using a double-linked list.
 
-Q2. Design, implement and test a linked list that allows 
-for the insertion of multiple objects with the same key at
-the same location.
+class Link{
+    public long dData;
+    public Link next;
+    public Link previous;
+    
+    public Link(long dd){
+        dData = dd;
+    }
+    
+    public void displayLink(){
+        System.out.print(dData + " ");
+    }
+}
 
-For example, if a list = [1.55.6.6.29.10]
-then both items with key 6 should be placed at one and the same 
-location in the list and both should be displayed if an inspection
-is required. Deletion, however, deletes only one of them, while 
-addition, adds still another object with the same key.
+class DoublyLinkedList{
+    private Link first;
+    private Link last;
+    
+    public DoublyLinkedList(){
+        first = null;
+        last = null;
+    }
+    
+    public boolean isEmpty(){
+        return (first == null);
+    }
+    
+    public void insertFirst(long dd){
+        Link newLink = new Link(dd);
+        
+        if (isEmpty()){
+            last = newLink;
+        } else {
+            first.previous = newLink;
+        }
+        newLink.next = first;
+        first = newLink;
+    }
+    
+    public void insertLast(long dd){
+        Link newLink = new Link(dd);
+        
+        if (isEmpty()){
+            first = newLink;
+        } else {
+            //last.previous = last;
+            last.next = newLink;
+            newLink.previous = last; 
+        }
+        last = newLink;
+    }
+    
+    public Link deleteFirst(){
+        Link temp = first;
+        if (first.next == null){
+            last = null;
+        } else {
+            first.next.previous = null;
+        }
+        first = first.next;
+        return temp;
+    }
+    
+    public Link deleteLast(){
+        Link temp = last;
+        if (first.next == null){
+            first = null;
+        } else {
+            last.previous.next = null;
+        }
+        last = last.previous;
+        return temp;
+    }
+    // insert dd after key, insert 77 after 22
+    public boolean insertAfter(long key, long dd){
+        Link current = first;
+        while ( current.dData != key ){
+            current = current.next;
+            if (current == null) {
+                return false;
+            }
+        }
+        Link newLink = new Link(dd);
+        
+        if ( current == last ){
+            newLink.next = null;
+            last = newLink;
+        } else {
+            newLink.next = current.next;
+            current.next.previous = newLink;
+        }
+        newLink.previous = current;
+        current.next = newLink;
+        return true;
+    }
+    
+    public Link deleteKey(long key){
+        Link current = first;
+        while ( current.dData != key ){
+            current = current.next;
+            if(current == null)
+                { return null; }
+        }
+        
+        if (current == first){
+            first = current.next;
+        } else {
+            current.previous.next = current.next;
+        }
+        
+        if (current == last){
+            last = current.previous;
+        } else {
+            current.next.previous = current.previous;
+        }
+        return current;
+    }
+    
+    public void displayForward(){
+        Link current = first;
+        while ( current != null ){
+            current.displayLink();
+            current = current.next;
+        }
+        System.out.println();
+    }
+    
+    public void displayBackward(){
+        Link current = last;
+        while ( current != null){
+            current.displayLink();
+            current = current.previous;
+        }
+        System.out.println();
+    }
+}
 
-Q3. Is it possible to build an augmented linked list with
-O(1) access time? Propose an idea, then compare the empirical 
-results of your implementation to the expected theoretical performance.
-
-Q4. Implement an array using a linked list. 
+class DoublyLinkedApp{
+    public static void main(String [] args){
+        DoublyLinkedList theList = new DoublyLinkedList();
+        
+        // EDIT THESE VARIABLES AND SEE OUTPUT!!
+        int[] toInsertFirst = {3,4,5,6,7,8,9};
+        int[] toInsertLast = {11,22,33,44,55,66,77};
+        int popFromFirst = 4;
+        int popFromLast = 3;
+        
+        System.out.println("Inserting toInsertFirst array at the beginning : ");
+        for ( int i = 0; i < toInsertFirst.length; i++){
+            theList.insertFirst(toInsertFirst[i]);
+        }
+        
+        theList.displayForward();
+        
+        System.out.println("Inserting toInsertLast array at the end : ");
+        for ( int i = 0; i < toInsertLast.length; i++){
+            theList.insertLast(toInsertLast[i]);
+        }
+        
+        theList.displayForward();
+        
+        System.out.println("Removing " + popFromFirst + " items from beginning : ");
+        for ( int i = 0; i < popFromFirst; i++){
+            theList.deleteFirst();
+        }
+        
+        theList.displayForward();
+        
+        System.out.println("Removing " + popFromLast + " items from end : ");
+        for ( int i = 0; i < popFromLast; i++){
+            theList.deleteLast();
+        }
+        
+        theList.displayForward();
+    }
+}

@@ -1,20 +1,12 @@
 
 class Link {
-    public int iData; // Integer data
-    public double dData; // Double Data
-    // There could be many other types in this Linked List so that it could accept any type of data
+    public int iData;
+    public double dData;
     
-    public Link next; // The next Link. This is only a reference, not an object
-    // This is a self referential class because one of the types is itself
-    
-    // Link aLink = someLink; is a reference
-    // Link someLink = new Link(); is an object
-    
-    // Constructor
+    public Link next;
     public Link (int id, double dd){
         iData = id;
         dData = dd;
-        // next is auomatically set to null
     }
     
     public void displayLink(){
@@ -24,23 +16,20 @@ class Link {
 
 class LinkList{
     
-    private Link first; // reference to the first link in the list
-    
-    // Constructor
+    private Link first;
     public void LinkList() {
-        first = null; // Empty List
+        first = null;
     }
     
     public boolean isEmpty(){
         return (first == null);
     }
     
-    // Insert to the first position
     public void insertFirst(int id, double dd){
         
-        Link newLink = new Link(id,dd); // create new link
-        newLink.next = first; // make the new links next(reference) point to the old first link
-        first = newLink; // make the new link the new first link
+        Link newLink = new Link(id,dd);
+        newLink.next = first;
+        first = newLink;
     }
     
     public void insertLast(int id, double dd){
@@ -61,7 +50,7 @@ class LinkList{
         while(current != null){
             if (current.iData == id && current.dData == dd) {
                 System.out.println("Found!");
-                return; // break if found
+                return;
             }
             current = current.next;
         }
@@ -94,9 +83,9 @@ class LinkList{
     }
     
     public Link deleteFirst(){
-        Link temp = first; // save reference to link
-        first = first.next; // make the second link the first link
-        return temp; // this is for the java garbage collector. in C we would need to disallocate the memory
+        Link temp = first;
+        first = first.next;
+        return temp;
     }
     
     public void displayList(){
@@ -114,7 +103,7 @@ class Test
 {
     public static void main(String[] args)
     {
-        LinkList theList = new LinkList(); // make new list
+        LinkList theList = new LinkList();
         theList.insertFirst(22,2.99);
         theList.insertFirst(44,4.99);
         theList.insertLast(222,10.99);
@@ -126,20 +115,5 @@ class Test
         theList.delete(44,4.99);
         
         theList.displayList();
-    
-        // insert four items
-        /*
-        while( (!theList.isEmpty()) )
-        // until it’s empty,
-        {
-            Link aLink = theList.deleteFirst();
-            // delete link
-            System.out.print("Deleted");
-            // display it
-            aLink.displayLink();
-            System.out.println("");
-        }
-        theList.displayList();
-        */
     }
 }
