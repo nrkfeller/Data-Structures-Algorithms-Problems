@@ -1,5 +1,5 @@
 // Q1. Implement a deque using a double-linked list.
-
+import java.util.Scanner;
 class Link{
     public long dData;
     public Link next;
@@ -140,13 +140,39 @@ class DoublyLinkedList{
 class DoublyLinkedApp{
     public static void main(String [] args){
         DoublyLinkedList theList = new DoublyLinkedList();
+
+
         
         // EDIT THESE VARIABLES AND SEE OUTPUT!!
-        int[] toInsertFirst = {3,4,5,6,7,8,9};
-        int[] toInsertLast = {11,22,33,44,55,66,77};
-        int popFromFirst = 4;
-        int popFromLast = 3;
-        
+        Scanner reader = new Scanner(System.in);
+        System.out.print("How many numbers will you input at the beginning? : ");
+        int start = reader.nextInt(); 
+
+        int toInsertFirst[] = new int[start];
+
+        System.out.print("How many numbers will you input at the end? : ");
+        int finish = reader.nextInt(); 
+
+        int toInsertLast[] = new int[finish];
+
+        System.out.print("How many numbers will you pop from beginning? : ");
+        int popFromFirst = reader.nextInt(); 
+
+        System.out.print("How many numbers will you pop from end? : ");
+        int popFromLast = reader.nextInt(); 
+
+        for (int i = 0; i < start ; i++){
+           System.out.print("Enter a number to insert at the beginning, " + (start - i) + " remaining : ");
+           int newNumber = reader.nextInt(); 
+           toInsertFirst[i] = newNumber;
+        }
+        for (int i = 0; i < finish ; i++){
+           System.out.print("Enter a number to insert at then ending, " + (finish - i) + " remaining : ");
+           int newNumber = reader.nextInt(); 
+           toInsertLast[i] = newNumber;
+        }
+
+
         System.out.println("Inserting toInsertFirst array at the beginning : ");
         for ( int i = 0; i < toInsertFirst.length; i++){
             theList.insertFirst(toInsertFirst[i]);

@@ -1,20 +1,4 @@
-/*
-Q1. Sort a single-linked list containing 
-any number of copies of the numbers {0,1,2,3}
-in O(N) time.
-
-Q2. Write a program to print elements of a linked list 
-in reverse order, by making use of the same linked list
-(which may implement any ADT of your choice).
-
-Q3. Merged two ordered linksed lists in a way that
-gives a resutant linked list that is ordered. Do not
-use a 3rd list.
-
-Q4. Devise an efficient algorithm to remove any & all
-redundant copies of every node in an unsorted double-linked list.
-*/
-
+import java.util.Scanner;
 class Link {
     public int iData;
     
@@ -133,20 +117,29 @@ class LinkList{
     }
 }
 
-class Test
+class SortZeroToThreeApp
 {
     public static void main(String[] args)
     {
         LinkList theList = new LinkList();
         LinkList sortedList = new LinkList();
         
+        Scanner reader = new Scanner(System.in);
+       	System.out.print("How many numbers do you want in your linked list ? : ");
+      	int lengthOfArray = reader.nextInt(); 
         // MODIFY THIS ARRAY TO YOUR LIKING AND CHECK THE OUTPUT
-        int[] UnsortedZeroToThree = {2,2,2,3,2,3,2,1,2,3,0,0,3,2,1};
-        
-        for ( int i = 0; i < UnsortedZeroToThree.length; i++){
-            theList.insertFirst(UnsortedZeroToThree[i]);
-        }
-        
+
+        for (int i = 0; i < lengthOfArray; i = i + 0){
+           System.out.print("Enter a number from 0 to 3, " + (lengthOfArray - i) + " remaining : ");
+           int newNumber = reader.nextInt(); 
+           if (newNumber > 3 ){
+           	System.out.println("Invalid input!");
+           } else {
+           	theList.insertFirst(newNumber);
+           	i++;
+           }
+       	}
+       	
         int count[] = theList.counter();
         for ( int i = 3; i >= 0; i--){
             for (int j = 0; j < count[i]; j++){
