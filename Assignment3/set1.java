@@ -7,7 +7,7 @@ class gcdApp{
     public static void main(String[] args){
         Scanner reader = new Scanner(System.in);
         System.out.print("Enter first number : ");
-        int A = reader.nextInt(); 
+        int A = reader.nextInt();
         
         System.out.print("Enter second number : ");
         int B = reader.nextInt(); 
