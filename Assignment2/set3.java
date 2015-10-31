@@ -12,26 +12,34 @@ class sumOfDigits {
     
    public static void main(String[] args) { 
        
-       // ENTER WHATEVER INTEGER HERE
+       // prompt user for input
        Scanner reader = new Scanner(System.in);
        System.out.print("Enter a number for split and add : ");
        int numberToSplit = reader.nextInt();
        //int numberToSplit = -12;
        
+       // output the result!
        System.out.println("The sum of digits is : " + sumOfDigits(numberToSplit));
    }
    
    public static int sumOfDigits(int x){
+       
+       // only take positive values
        x = Math.abs(x);
+       // start with first order of magniture
        int orderOfMagnitude = 1;
+       // user temp to store new values
        int temp = 0;
+       // user answer to store all old values
        int answer = 0;
+       
+       // as long as we havnt reached the order of magnitude of the input keep chunking it off
        while ( x > orderOfMagnitude){
-           
+           // increment order of magnitude
            orderOfMagnitude = orderOfMagnitude * 10;
-           
+           // get value of the digit at newest order of magnitude
            temp = (x%orderOfMagnitude - answer)/(orderOfMagnitude/10);
-           
+           // add new value to the answer
            answer = answer + temp;
        }
        return answer;
