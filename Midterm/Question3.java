@@ -4,7 +4,7 @@ mean of an n-element unsorted linked list. (b) Estimate the time complexity of t
 Implement the algorithm then compare the expected time complexity to the actual empirical
 results obtained from the implementation; explain any discrepancies. [30]
 
-
+L
 Add number and divide by N neach time , should be On compelxity
 */
 import java.util.Scanner;
@@ -106,11 +106,15 @@ class LinkListApp
         // enter all values of the array
         for (int i = 0; i < numberOfLinks ; i++){
            System.out.print("Enter a floating point or int, " + (numberOfLinks - i) + " remaining : ");
-           double newNumber = reader.nextDouble(); 
+           double newNumber = reader.nextDouble(); // could randomly generate : (int)(Math.random() * (100000));
            theList.insertFirst(newNumber); // insert user prompted value!
        }
         
-        theList.displayList(); // display list
+        // theList.displayList(); // display list
+        long startTime = System.nanoTime();
         System.out.println("Mean is : " + theList.Mean()); // display list
+        long estimatedTime = System.nanoTime() - startTime;
+        // output time of computation and printing
+        System.out.println(estimatedTime/1000000000.0000 + " Seconds to calculate mean");
     } // end main()
 } // end class LinkListApp
