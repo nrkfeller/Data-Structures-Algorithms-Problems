@@ -105,8 +105,8 @@ class LinkListApp
         LinkList theList = new LinkList();
         // enter all values of the array
         for (int i = 0; i < numberOfLinks ; i++){
-           System.out.print("Enter a floating point or int, " + (numberOfLinks - i) + " remaining : ");
-           double newNumber = reader.nextDouble(); // could randomly generate : (int)(Math.random() * (100000));
+           //System.out.print("Enter a floating point or int, " + (numberOfLinks - i) + " remaining : ");
+           double newNumber = (int)(Math.random() * (5000)); // could randomly generate : (int)(Math.random() * (100000));
            theList.insertFirst(newNumber); // insert user prompted value!
        }
         
