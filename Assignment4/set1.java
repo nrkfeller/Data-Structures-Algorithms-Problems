@@ -1,5 +1,6 @@
 /*
-Q1. Build a hash table with open addressing and a size of 99. Use the hash function "k%99". Insert the following keys, in order: 15, 229, 320, 0, 127 and 18 into your table.
+Q1. Build a hash table with open addressing and a size of 99. Use the hash function "k%99". Insert the 
+following keys, in order: 15, 229, 320, 0, 127 and 18 into your table.
 
 Q2. Design and imeplement a perfect hashing based algorithm that accepts a Concordia student ID as input and generates a unique index as output. Look up: Perfect Hashing.
 
