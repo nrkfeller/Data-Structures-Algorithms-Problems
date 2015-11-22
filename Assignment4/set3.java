@@ -15,3 +15,4 @@ Q4. Use a heap to implement a stack. Hint: the order or time
 of entry (which are increasing quantities) could be used as 
 the key of the inserted element. 
 */
+
