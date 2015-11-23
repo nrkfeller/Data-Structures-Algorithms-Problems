@@ -50,8 +50,7 @@ class Heap
     {
         int parent = (index-1) / 2;
         Node bottom = heapArray[index];
-        while( index > 0 &&
-        heapArray[parent].getKey() < bottom.getKey() )
+        while( index > 0 && heapArray[parent].getKey() > bottom.getKey() )
             {
             heapArray[index] = heapArray[parent]; // move it down
             index = parent;
@@ -82,14 +81,12 @@ class Heap
             int leftChild = 2*index+1;
             int rightChild = leftChild+1;
             // find larger child
-            if(rightChild < currentSize && // (rightChild exists?)
-            heapArray[leftChild].getKey() <
-            heapArray[rightChild].getKey())
-            largerChild = rightChild;
+            if(rightChild > currentSize && heapArray[leftChild].getKey() > heapArray[rightChild].getKey())
+                largerChild = rightChild;
             else
-            largerChild = leftChild;
+                largerChild = leftChild;
             // top >= largerChild?
-            if( top.getKey() >= heapArray[largerChild].getKey() )
+            if( top.getKey() <= heapArray[largerChild].getKey() )
             break;
             // shift child up
             heapArray[index] = heapArray[largerChild];
@@ -102,7 +99,7 @@ class Heap
     // -------------------------------------------------------------
     public boolean change(int index, int newValue)
     {
-        if(index<0 || index>=currentSize)
+        if(index < 0 || index >= currentSize)
         return false;
         int oldValue = heapArray[index].getKey(); // remember old
         heapArray[index].setKey(newValue); // change to new
@@ -179,6 +176,22 @@ class HeapApp
     Heap theHeap = new Heap(31); // make a Heap; max size 31
     boolean success;
     // insert 10 items
+    
+    theHeap.insert(4);
+    theHeap.insert(9);
+    theHeap.insert(2);
+    theHeap.insert(89);
+    theHeap.insert(12);
+    theHeap.insert(69);
+    theHeap.insert(32);
+    theHeap.insert(1);
+    theHeap.insert(56);
+    theHeap.insert(12);
+    theHeap.insert(-12);
+    theHeap.insert(190);
+    theHeap.insert(-5);
+    theHeap.insert(77);
+
     while(true)
     // until [Ctrl]-[C]
     {
