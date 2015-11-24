@@ -1,14 +1,6 @@
 /*
 Q1. Build a hash table with open addressing and a size of 99. Use the hash function "k%99". Insert the 
 following keys, in order: 15, 229, 320, 0, 127 and 18 into your table.
-
-Q2. Design and imeplement a perfect hashing based algorithm that accepts a Concordia student ID as input and generates a unique index as output. Look up: Perfect Hashing.
-
-Q3. Do Q2, but this time, instead of having to generate a unique index as output, you may
-allow collisions, but resolve these collisions using some form of Double Hashing.
-
-Q4. Do Q2, but instead of ensuring uique indexes or using double hashing, use Separate 
-Chaining with linked lists. 
 */
 
 import java.io.*;
